@@ -7,13 +7,7 @@
     android:orientation="vertical"
     tools:context="com.kikt.parallax.MainActivity">
 
-    <!--<FrameLayout-->
-    <!--android:id="@+id/fl_head"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="80dp"-->
-    <!--android:background="#f00"/>-->
-
-    <com.kikt.reboundscrollview.ObservableScrollView
+    <com.kikt.reboundscrollview.ReboundScrollView
         android:id="@+id/sv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,6 +43,6 @@
 
         </LinearLayout>
 
-    </com.kikt.reboundscrollview.ObservableScrollView>
+    </com.kikt.reboundscrollview.ReboundScrollView>
 
 </LinearLayout>

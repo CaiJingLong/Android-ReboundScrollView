@@ -14,19 +14,19 @@ import com.nineoldandroids.view.ViewHelper;
  * Created by kikt on 2016/3/20.
  * 到顶部还可以继续下拉，实现动画效果的ScrollView
  */
-public class ObservableScrollView extends ScrollView {
+public class ReboundScrollView extends ScrollView {
     private final Context mContext;
     private ScrollViewListener scrollViewListener;
 
-    public ObservableScrollView(Context context) {
+    public ReboundScrollView(Context context) {
         this(context, null);
     }
 
-    public ObservableScrollView(Context context, AttributeSet attrs) {
+    public ReboundScrollView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ObservableScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ReboundScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
     }
@@ -37,14 +37,14 @@ public class ObservableScrollView extends ScrollView {
         return enableAnimation;
     }
 
-    public void setEnableAnimation(boolean enableAnimation) {
+    public void setCanRebound(boolean enableAnimation) {
         this.enableAnimation = enableAnimation;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!enableAnimation) {
-            return false;
+            return super.onTouchEvent(event);
         }
         if (!checkTop(event)) {
             return super.onTouchEvent(event);
@@ -91,7 +91,7 @@ public class ObservableScrollView extends ScrollView {
         }
     }
 
-    public void setHeaderHeight(int headerHeight) {
+    public void setMaxHeight(int headerHeight) {
         this.headerHeight = headerHeight;
     }
 
@@ -132,7 +132,7 @@ public class ObservableScrollView extends ScrollView {
 
     private View mLayoutHead;
 
-    public void setLayoutHead(View mLayoutHead) {
+    public void setHeaderView(View mLayoutHead) {
         this.mLayoutHead = mLayoutHead;
         mLayoutHead.getViewTreeObserver().addOnGlobalLayoutListener(new LayoutListener(mLayoutHead));
     }
@@ -164,7 +164,7 @@ public class ObservableScrollView extends ScrollView {
     }
 
     public interface ScrollViewListener {
-        void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy);
+        void onScrollChanged(ReboundScrollView scrollView, int x, int y, int oldx, int oldy);
     }
 
     private ScrollViewListener ScrollViewListener;
