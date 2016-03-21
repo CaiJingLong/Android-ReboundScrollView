@@ -7,7 +7,7 @@
     'com.nineoldandroids:library:2.4.0' 兼容API9以下的动画库
     
 ## 截图
-![gif](https://1c1wvg.bn1303.livefilestore.com/y3pH1KMYZHMk5fQssAruMsh_kIAoyqyGzj9dKqFQiL-M6SVdpfmJb4Okf7gpU3HdpP-HEgU-hewljA1IOwUQJYnQWiMzGDC17aZuVdOcFEcbtAblZofyKmBzQ6w7t844PAhUTDEZee-Ibym0WFUSYF7dw/1.gif?psid=1)
+![gif](https://1c1wvg.bn1303.livefilestore.com/y3pBL-ITWpqHaKcbpKEKS2ymqnC_9a3WpWId6t6IhFrbGntyZrzzNzaMAS5EFaxEUQ-5GClbiuQTJUY3YhyB6gtOi5i0kbEld7g9OabwGj42zqgDBJcv-vSYZpg9Tp-_EwJGlGfPedr2iDLlDDfuGrgLY82WIUe8hrB3Hck0OkTejg/1.gif?psid=1)
 
 ## 使用时的核心代码
 
