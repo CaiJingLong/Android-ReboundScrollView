@@ -137,6 +137,14 @@ public class ReboundScrollView extends ScrollView {
         mLayoutHead.getViewTreeObserver().addOnGlobalLayoutListener(new LayoutListener(mLayoutHead));
     }
 
+    public OnAnimListener getOnAnimListener() {
+        return onAnimListener;
+    }
+
+    public void setOnAnimListener(OnAnimListener onAnimListener) {
+        this.onAnimListener = onAnimListener;
+    }
+
     class LayoutListener implements ViewTreeObserver.OnGlobalLayoutListener {
         private View view;
 
@@ -155,12 +163,23 @@ public class ReboundScrollView extends ScrollView {
 
     private void updateHeaderView(float diffY, int animationHeight) {
         if (mLayoutHead != null) {
+            float fraction = diffY / animationHeight;
+            if (onAnimListener != null) {
+                onAnimListener.onAnim(this, fraction, diffY);
+            }
+
             float scale = 1 + diffY / animationHeight / 2 / 2;//缩放比例
             ViewHelper.setScaleX(mLayoutHead, scale);
             ViewHelper.setScaleY(mLayoutHead, scale);
             mLayoutHead.getLayoutParams().height = (int) (mLayoutHeadHeight + diffY);
             mLayoutHead.requestLayout();
         }
+    }
+
+    private OnAnimListener onAnimListener;
+
+    public interface OnAnimListener{
+        void onAnim(ReboundScrollView scrollView, float fraction, float height);
     }
 
     public interface ScrollViewListener {

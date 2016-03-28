@@ -2,6 +2,7 @@ package com.kikt.parallax;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.kikt.reboundscrollview.ReboundScrollView;
@@ -9,7 +10,7 @@ import com.kikt.reboundscrollview.ReboundScrollView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ReboundScrollView.OnAnimListener {
 
     @Bind(R.id.fl_head)
     FrameLayout mFlHead;
@@ -28,8 +29,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mSvContent.setOnAnimListener(this);
+
         mSvContent.setCloseDuration(300);
         mSvContent.setMaxHeight(200);
-        mSvContent.setCanRebound(false);
+    }
+
+    @Override
+    public void onAnim(ReboundScrollView scrollView, float fraction, float height) {
+        Log.d("MainActivity", "fraction:" + fraction);
+        Log.d("MainActivity", "height:" + height);
     }
 }
