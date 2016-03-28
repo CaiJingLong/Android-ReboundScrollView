@@ -77,5 +77,15 @@
     mSvContent.setMaxHeight(200);//最大的增加高度
     mSvContent.setCanRebound(false);//设定开启弹性功能与否
 
+    mSvContent.setOnAnimListener(new ReboundScrollView.OnAnimListener() {//侦听动画
+        @Override
+        public void onAnim(ReboundScrollView scrollView, float fraction, float height) {
+            Log.d("MainActivity", "fraction:" + fraction);//下拉的百分比
+            Log.d("MainActivity", "height:" + height);//下拉的高度
+        }
+    });
+
+
+
 ## 关于自定义属性
     暂时未加入，后续会考虑加入自定义属性

@@ -10,7 +10,7 @@ import com.kikt.reboundscrollview.ReboundScrollView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements ReboundScrollView.OnAnimListener {
+public class MainActivity extends AppCompatActivity{
 
     @Bind(R.id.fl_head)
     FrameLayout mFlHead;
@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity implements ReboundScrollView
             }
         });
 
-        mSvContent.setOnAnimListener(this);
+        mSvContent.setOnAnimListener(new ReboundScrollView.OnAnimListener() {
+            @Override
+            public void onAnim(ReboundScrollView scrollView, float fraction, float height) {
+                Log.d("MainActivity", "fraction:" + fraction);
+                Log.d("MainActivity", "height:" + height);
+            }
+        });
 
         mSvContent.setCloseDuration(300);
         mSvContent.setMaxHeight(200);
-    }
-
-    @Override
-    public void onAnim(ReboundScrollView scrollView, float fraction, float height) {
-        Log.d("MainActivity", "fraction:" + fraction);
-        Log.d("MainActivity", "height:" + height);
     }
 }
